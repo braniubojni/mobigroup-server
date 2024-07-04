@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CreateStaffDto } from './dto/create-staff.dto';
 import { ApStaffService } from './ap-staff.service';
 
@@ -9,5 +9,10 @@ export class ApStaffController {
   @Post()
   createStaff(@Body() staffDto: CreateStaffDto) {
     return this.staffService.createStaff(staffDto);
+  }
+
+  @Get()
+  getStaffList() {
+    return this.staffService.listStaff();
   }
 }

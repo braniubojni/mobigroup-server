@@ -11,4 +11,9 @@ export class ApStaffService {
     const staff = await this.staffRepo.create(dto);
     return staff;
   }
+
+  async listStaff() {
+    const staffList = await this.staffRepo.findAll();
+    return staffList;
+  }
 }
