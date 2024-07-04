@@ -1,0 +1,18 @@
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MARIA_DB_PASSWORD}
+      MYSQL_DATABASE: ${MARIA_DB_DB}
+      MYSQL_USER: ${MARIA_DB_USER}
+      MYSQL_PASSWORD: ${MARIA_DB_PASSWORD}
+    ports:
+      - '${MARIA_DB_PORT}:3306'
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+volumes:
+  mariadb_data:
+    driver: local
