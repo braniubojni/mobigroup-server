@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Logger, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { APStaff } from './ap-staff/ap-staff.model';
@@ -28,7 +28,10 @@ import { AuthModule } from './auth/auth.module';
           database,
           models: [APStaff],
           autoLoadModels: false, // MAKE FALSE IN PRODUCTION
-          logging: false,
+          logging: Logger.error,
+          define: {
+            freezeTableName: true,
+          },
           pool: {
             max: 10, // Maximum number of connections in pool
             min: 0, // Minimum number of connections in pool

@@ -16,4 +16,13 @@ export class ApStaffService {
     const staffList = await this.staffRepo.findAll();
     return staffList;
   }
+
+  async getByEmail(): Promise<APStaff | null> {
+    // TODO: Waiting for Mher's response
+    const staff = await this.staffRepo.findOne({
+      where: {},
+    });
+
+    return staff;
+  }
 }
