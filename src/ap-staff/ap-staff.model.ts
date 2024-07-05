@@ -33,6 +33,7 @@ export class APStaff extends Model<APStaff, APStaffCreationAttrs> {
   @Column({
     type: DataType.STRING(50),
     allowNull: false,
+    unique: true,
   })
   username: string;
 
