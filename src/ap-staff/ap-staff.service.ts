@@ -17,10 +17,11 @@ export class ApStaffService {
     return staffList;
   }
 
-  async getByEmail(): Promise<APStaff | null> {
-    // TODO: Waiting for Mher's response
+  async getByUsername(username: string): Promise<APStaff | null> {
     const staff = await this.staffRepo.findOne({
-      where: {},
+      where: {
+        username,
+      },
     });
 
     return staff;

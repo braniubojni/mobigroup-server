@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { ApStaffService } from './ap-staff.service';
 import { CreateStaffDto } from './dto/create-staff.dto';
+import { JwtAuthGuard } from 'src/common/guards/auth-jwt.guard';
 
 @Controller('ap-staff')
 export class ApStaffController {
@@ -11,7 +12,7 @@ export class ApStaffController {
     return this.staffService.createStaff(staffDto);
   }
 
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get()
   getStaffList() {
     return this.staffService.listStaff();
