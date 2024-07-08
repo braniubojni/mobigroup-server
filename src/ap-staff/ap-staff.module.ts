@@ -8,7 +8,15 @@ import { JwtModule } from '@nestjs/jwt';
 @Module({
   providers: [ApStaffService],
   controllers: [ApStaffController],
-  imports: [SequelizeModule.forFeature([APStaff]), JwtModule],
+  imports: [
+    SequelizeModule.forFeature([APStaff]),
+    JwtModule.register({
+      secret: process.env.PRIVATE_KEY || 'SECRET_!@#',
+      signOptions: {
+        expiresIn: '365d',
+      },
+    }),
+  ],
   exports: [ApStaffService],
 })
 export class ApStaffModule {}

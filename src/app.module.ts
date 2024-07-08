@@ -17,7 +17,7 @@ import { AuthModule } from './auth/auth.module';
           MARIA_DB_PORT: port,
           MARIA_DB_USER: username,
           MARIA_DB_PASSWORD: password,
-          MARIA_DB_DB: database,
+          MARIA_DB_NAME: database,
         } = process.env;
         return {
           dialect: 'mariadb',
